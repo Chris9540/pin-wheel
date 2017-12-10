@@ -4,8 +4,11 @@
     <title>Raffle Wheel</title>
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="js/plugins/jquery/jquery-ui-1.12.1/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="js/plugins/jquery/jquery-ui-1.12.1/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="js/plugins/jquery/jquery-ui-1.12.1/jquery-ui.structure.min.css">
     <script type="text/javascript" src="js/plugins/jquery/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+
     <script type="text/javascript" src="js/plugins/PapaParse-4.3.2/papaparse.min.js"></script>
     <script type="text/javascript" src="js/plugins/winwheel-2.6/Winwheel.min.js"></script>
     <script type="text/javascript" src="js/plugins/tween.min.js"></script>
@@ -36,10 +39,28 @@
         <div class="sidebar-item">
             <div class="sidebar-title">
                 <h3>Game Controls</h3>
-                <div class="sidebar-icon" onclick="toggleContent(this, 'game-content', '72px')">+</div>
+                <div class="sidebar-icon" onclick="toggleContent(this, 'game-content', '400px')">+</div>
             </div>
             <div id="game-content" class="sidebar-content" style="height: 0px;">
-                <button onclick="resizeCanvas()">Re-Size Canvas</button>
+                <button onclick="resizeCanvas()" style="margin-bottom: 4px;">Re-Size Canvas</button>
+                <table align="center">
+                    <tr>
+                        <td>
+                            Radius
+                        </td>
+                        <td>
+                            Height
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="slider-vertical-zoom" class="slider"></div>
+                        </td>
+                        <td>
+                            <div id="slider-vertical-height" class="slider"></div>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
