@@ -8,10 +8,41 @@
     <script type="text/javascript" src="js/plugins/jquery/jquery-ui-1.12.1/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/plugins/PapaParse-4.3.2/papaparse.min.js"></script>
     <script type="text/javascript" src="js/plugins/winwheel-2.6/Winwheel.min.js"></script>
+    <script type="text/javascript" src="js/plugins/tween.min.js"></script>
     <script type="text/javascript" src="js/page-functions.js"></script>
     <script type="text/javascript" src="js/game.js"></script>
 </head>
 <body>
 
+    <div class="nav-bar">
+        <div class="btn-menu" id="btn-menu">&#9776;</div>
+    </div>
+    <div class="sidebar" id="sidebar" style="width: 0; opacity: 0">
+        <div class="sidebar-item">
+            <div class="sidebar-title">
+                <h3>CSV Upload</h3>
+                <div class="sidebar-icon" onclick="toggleContent(this, 'csv-content', '72px')">+</div>
+            </div>
+            <div id="csv-content" class="sidebar-content" style="height : 0px;">
+                <input type="file" name=""/>
+                <div class="parse-file-row">
+                    <button>Load Data</button>
+                    <div style="display: none; color: green" class="text-icon">&#10004;</div>
+                    <div style="display: none; color: red;" class="text-icon">&#10008;</div>
+                    <img style="display: none;" src="image/load.gif" height="32px" width="32px">
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-item">
+            <div class="sidebar-title">
+                <h3>Game Controls</h3>
+                <div class="sidebar-icon" onclick="toggleContent(this, 'game-content', '72px')">+</div>
+            </div>
+            <div id="game-content" class="sidebar-content" style="height: 0px;">
+                <button onclick="resizeCanvas()">Re-Size Canvas</button>
+            </div>
+        </div>
+    </div>
+    <canvas id="kanvas" class="kanvas"></canvas>
 </body>
 </html>

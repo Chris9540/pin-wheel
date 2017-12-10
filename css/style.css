@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-family: 'Fira Sans', sans-serif;
+    color: #D3D3D3;
+}
+
+body {
+    background-color: #bdbdbd;
+}
+
+h3 {
+    height: 16px;
+    line-height: 16px;
+    font-size: 16px;
+    margin: 0 0 0 4px;
+}
+
+button {
+    height: 32px;
+    line-height: 32px;
+    font-size: 16px;
+    font-weight: 800;
+    background-color: #5F5F5F;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    padding: 0 2px;
+}
+
+button:hover {
+    color: #6496C6;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    visibility: hidden;
+}
+input[type="file"] {
+
+}
+
+input[type="file"]::before {
+    content: 'Choose File';
+    height: 32px;
+    display: inline-block;
+    background-color: #5F5F5F;
+    border-radius: 0px;
+    padding: 0;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 32px;
+    text-align: center;
+    color: white;
+    transition: all 0.5s ease-in-out;
+}
+
+input[type="file"]:hover::before {
+    color: #6496C6;
+}
+
+.nav-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #373737;
+    border-bottom: 1px solid #D3D3D3;
+}
+
+.btn-menu {
+    height: 32px;
+    width: 32px;
+    margin: 4px;
+    font-size: 32px;
+    line-height: 32px;
+    text-align: center;
+    color: #D3D3D3;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+.btn-menu:hover {
+    color: #6496C6;
+}
+
+.sidebar {
+    position: absolute;
+    left: 0px;
+    top: 40px;
+    height: 100%;
+    background-color: #373737;
+    transition: all 0.5s ease-in-out;
+    overflow-x: hidden;
+    z-index: 9999;
+}
+
+.sidebar-item {
+    border-bottom: 1px solid #D3D3D3;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.sidebar-title {
+    display: flex;
+    height: 20px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    overflow: hidden;
+}
+
+.sidebar-icon {
+    height: 16px;
+    width: 16px;
+    line-height: 16px;
+    font-size: 16px;
+    font-weight: 800;
+    background-color: #5F5F5F;
+    text-align: center;
+    margin-left: 4px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+.sidebar-icon:hover {
+    color: #6496C6;
+}
+
+.sidebar-content {
+    margin-left: 4px;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+}
+
+.text-icon {
+    height: 32px;
+    width: 32px;
+    font-size: 32px;
+    line-height: 32px;
+    text-align: center;
+}
+
+.parse-file-row {
+    display: flex;
+    margin: 4px 0px;
+    overflow: hidden;
+}
+
+.kanvas {
+    display: block;
+    position: absolute;
+    top: 41px;
+    left: 0px;
+    background: linear-gradient(to bottom, #bdbdbd, #373737);
+}
