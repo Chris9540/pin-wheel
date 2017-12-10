@@ -17,6 +17,7 @@ h3 {
     line-height: 16px;
     font-size: 16px;
     margin: 0 0 0 4px;
+    width: 125px;
 }
 
 button {
@@ -28,7 +29,6 @@ button {
     text-align: center;
     cursor: pointer;
     transition: all 0.5s ease-in-out;
-    padding: 0 2px;
 }
 
 button:hover {
@@ -41,6 +41,10 @@ input[type="file"]::-webkit-file-upload-button {
 
 input[type="file"] {
 
+}
+
+input[type="color"] {
+    background-color: #373737;
 }
 
 input[type="file"]::before {

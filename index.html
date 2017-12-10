@@ -4,11 +4,10 @@
     <title>Raffle Wheel</title>
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="js/plugins/jquery/jquery-ui-1.12.1/jquery-ui.min.css"/>
-    <link rel="stylesheet" href="js/plugins/jquery/jquery-ui-1.12.1/jquery-ui.theme.min.css">
-    <link rel="stylesheet" href="js/plugins/jquery/jquery-ui-1.12.1/jquery-ui.structure.min.css">
+    <link rel="stylesheet" href="js/plugins/jquery/jquery-ui-1.12.1/jquery-ui.theme.min.css"/>
+    <link rel="stylesheet" href="js/plugins/jquery/jquery-ui-1.12.1/jquery-ui.structure.min.css"/>
     <script type="text/javascript" src="js/plugins/jquery/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-
     <script type="text/javascript" src="js/plugins/PapaParse-4.3.2/papaparse.min.js"></script>
     <script type="text/javascript" src="js/plugins/winwheel-2.6/Winwheel.min.js"></script>
     <script type="text/javascript" src="js/plugins/tween.min.js"></script>
@@ -16,26 +15,29 @@
     <script type="text/javascript" src="js/game.js"></script>
 </head>
 <body>
-
+<!-- TOP NAV BAR -->
     <div class="nav-bar">
         <div class="btn-menu" id="btn-menu">&#9776;</div>
     </div>
+<!-- SIDEBAR -->
     <div class="sidebar" id="sidebar" style="width: 0; opacity: 0">
+<!-- CSV CONTROLS -->
         <div class="sidebar-item">
             <div class="sidebar-title">
                 <h3>CSV Upload</h3>
                 <div class="sidebar-icon" onclick="toggleContent(this, 'csv-content', '72px')">+</div>
             </div>
             <div id="csv-content" class="sidebar-content" style="height : 0px;">
-                <input type="file" name=""/>
+                <input type="file" id="csv"/>
                 <div class="parse-file-row">
-                    <button>Load Data</button>
-                    <div style="display: none; color: green" class="text-icon">&#10004;</div>
-                    <div style="display: none; color: red;" class="text-icon">&#10008;</div>
-                    <img style="display: none;" src="image/load.gif" height="32px" width="32px">
+                    <button style="width: 82.781px;" onclick="parseCSV()">Load Data</button>
+                    <div id="pass" style="display: none; color: green" class="text-icon">&#10004;</div>
+                    <div id="fail" style="display: none; color: red;" class="text-icon">&#10008;</div>
+                    <img id="load" style="display: none;" src="image/load.gif" height="32px" width="32px">
                 </div>
             </div>
         </div>
+<!-- GAME CONTROLS -->
         <div class="sidebar-item">
             <div class="sidebar-title">
                 <h3>Game Controls</h3>
@@ -43,13 +45,16 @@
             </div>
             <div id="game-content" class="sidebar-content" style="height: 0px;">
                 <button onclick="resizeCanvas()" style="margin-bottom: 4px;">Re-Size Canvas</button>
-                <table align="center">
+                <table align="center" style="text-align: center; width: 100%">
                     <tr>
-                        <td>
+                        <td width="96px">
                             Radius
                         </td>
-                        <td>
+                        <td width="96px">
                             Height
+                        </td>
+                        <td width="96px">
+                            Pin
                         </td>
                     </tr>
                     <tr>
@@ -59,11 +64,85 @@
                         <td>
                             <div id="slider-vertical-height" class="slider"></div>
                         </td>
+                        <td>
+                            <div id="slider-vertical-pin" class="slider"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="sidebar-item">
+            <div class="sidebar-title">
+                <h3>Wheel Colors</h3>
+                <div class="sidebar-icon" onclick="toggleContent(this, 'wheel-content', '250px')">+</div>
+            </div>
+            <div id="wheel-content" class="sidebar-content" style="height: 0px;">
+                <table style="width: 100%;">
+                    <tr>
+                        <td>Color 1</td>
+                        <td><input type="color" name="color-list" value="#FF0000" /></td>
+                        <td>Color 2</td>
+                        <td><input type="color" name="color-list" value="#00FF00" /></td>
+                    </tr>
+                    <tr>
+                        <td>Color 3</td>
+                        <td><input type="color" name="color-list" value="#0000FF" /></td>
+                        <td>Color 4</td>
+                        <td><input type="color" name="color-list" value="#FFFF00" /></td>
+                    </tr>
+                    <tr>
+                        <td>Color 5</td>
+                        <td><input type="color" name="color-list" value="#00FFFF" /></td>
+                        <td>Color 6</td>
+                        <td><input type="color" name="color-list" value="#FF00FF" /></td>
+                    </tr>
+                    <tr>
+                        <td>Color 7</td>
+                        <td><input type="color" name="color-list" value="#FF7F00" /></td>
+                        <td>Color 8</td>
+                        <td><input type="color" name="color-list" value="#7E00FF" /></td>
+                    </tr>
+                    <tr>
+                        <td>Color 9</td>
+                        <td><input type="color" name="color-list"/></td>
+                        <td>Color 10</td>
+                        <td><input type="color" name="color-list"/></td>
+                    </tr>
+                    <tr>
+                        <td>Color 11</td>
+                        <td><input type="color" name="color-list"/></td>
+                        <td>Color 12</td>
+                        <td><input type="color" name="color-list"/></td>
+                    </tr>
+                    <tr>
+                        <td>Color 13</td>
+                        <td><input type="color" name="color-list"/></td>
+                        <td>Color 14</td>
+                        <td><input type="color" name="color-list"/></td>
+                    </tr>
+                    <tr>
+                        <td>Color 15</td>
+                        <td><input type="color" name="color-list"/></td>
+                        <td>Color 16</td>
+                        <td><input type="color" name="color-list"/></td>
+                    </tr>
+                    <tr>
+                        <td>Color 17</td>
+                        <td><input type="color" name="color-list"/></td>
+                        <td>Color 18</td>
+                        <td><input type="color" name="color-list"/></td>
+                    </tr>
+                    <tr>
+                        <td>Color 19</td>
+                        <td><input type="color" name="color-list"/></td>
+                        <td>Color 20</td>
+                        <td><input type="color" name="color-list"/></td>
                     </tr>
                 </table>
             </div>
         </div>
     </div>
+<!-- CANVAS -->
     <canvas id="kanvas" class="kanvas"></canvas>
 </body>
 </html>
