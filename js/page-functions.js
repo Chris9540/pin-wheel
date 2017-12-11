@@ -92,8 +92,10 @@ $(function() {
     });
 });
 
-window.csvData = null;
-
+window.csvData = new Array();
+window.fullCSVlengh = 0;
+window.entries = 0;
+window.blank = 0;
 
 function parseCSV() {
     document.getElementById('load').style.display = "inline-block";
@@ -109,13 +111,28 @@ function parseCSV() {
                 encoding: "",
                 worker: false,
                 comments: false,
-                step: undefined,
-                complete:   function(results, file) {
-                                console.log("Parsing complete:", results.data);
-                                csvData = results.data;
-                                document.getElementById('load').style.display = "none"
-                                document.getElementById('pass').style.display = "inline-block"
-                            },
+                step: function(results, parser) {
+                  let row = results.data[0];
+                  if (row.length == 2) {
+                    fullCSVlengh += 1
+                    if (row[1] != "BLANK") {
+                        entries += 1
+                        csvData.push(row)
+                    }
+                  }
+                },
+                complete:   function() {
+                    blank = fullCSVlengh - entries
+                    console.log("full length : " + fullCSVlengh)
+                    console.log("entries : " + entries)
+                    console.log("blanks : " + blank)
+                    console.log(csvData)
+                    document.getElementById('load').style.display = "none"
+                    document.getElementById('pass').style.display = "inline-block"
+                    document.getElementById('entries').innerText = entries
+                    document.getElementById('blanks').innerText = blank
+                    document.getElementById('total').innerText = fullCSVlengh
+                },
                 error: undefined,
                 download: false,
                 skipEmptyLines: false,
@@ -132,4 +149,4 @@ function parseCSV() {
             },
         });
     },50);
-}
+}​

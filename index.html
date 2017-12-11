@@ -25,7 +25,7 @@
         <div class="sidebar-item">
             <div class="sidebar-title">
                 <h3>CSV Upload</h3>
-                <div class="sidebar-icon" onclick="toggleContent(this, 'csv-content', '72px')">+</div>
+                <div class="sidebar-icon" onclick="toggleContent(this, 'csv-content', '150px')">+</div>
             </div>
             <div id="csv-content" class="sidebar-content" style="height : 0px;">
                 <input type="file" id="csv"/>
@@ -35,15 +35,29 @@
                     <div id="fail" style="display: none; color: red;" class="text-icon">&#10008;</div>
                     <img id="load" style="display: none;" src="image/load.gif" height="32px" width="32px">
                 </div>
+                <table>
+                  <tr>
+                    <td width="100px">Entries</td>
+                    <td id="entries">0</td>
+                  </tr>
+                  <tr>
+                    <td width="100px">Blanks</td>
+                    <td id="blanks">0</td>
+                  </tr>
+                  <tr>
+                    <td width="100px">Total</td>
+                    <td id="total">0</td>
+                  </tr>
+                </table>
             </div>
         </div>
 <!-- GAME CONTROLS -->
         <div class="sidebar-item">
             <div class="sidebar-title">
-                <h3>Game Controls</h3>
-                <div class="sidebar-icon" onclick="toggleContent(this, 'game-content', '400px')">+</div>
+                <h3>Wheel Position</h3>
+                <div class="sidebar-icon" onclick="toggleContent(this, 'wheel-content', '400px')">+</div>
             </div>
-            <div id="game-content" class="sidebar-content" style="height: 0px;">
+            <div id="wheel-content" class="sidebar-content" style="height: 0px;">
                 <button onclick="resizeCanvas()" style="margin-bottom: 4px;">Re-Size Canvas</button>
                 <table align="center" style="text-align: center; width: 100%">
                     <tr>
@@ -74,9 +88,10 @@
         <div class="sidebar-item">
             <div class="sidebar-title">
                 <h3>Wheel Colors</h3>
-                <div class="sidebar-icon" onclick="toggleContent(this, 'wheel-content', '250px')">+</div>
+                <div class="sidebar-icon" onclick="toggleContent(this, 'wheel-color-content', '250px')">+</div>
             </div>
-            <div id="wheel-content" class="sidebar-content" style="height: 0px;">
+            <div id="wheel-color-content" class="sidebar-content" style="height: 0px;">
+              <p>Black will be ignored</p>
                 <table style="width: 100%;">
                     <tr>
                         <td>Color 1</td>
@@ -146,3 +161,4 @@
     <canvas id="kanvas" class="kanvas"></canvas>
 </body>
 </html>
+
