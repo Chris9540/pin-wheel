@@ -1,10 +1,19 @@
+/* remember to define focus styles! */
+:focus {
+    outline: 0;
+    }
+
 * {
     margin: 0;
     padding: 0;
-    border: none;
-    outline: none;
+    border: 0;
+    outline: 0;
     font-family: 'Fira Sans', sans-serif;
     color: #D3D3D3;
+}
+
+*:focus {
+   outline: 0;
 }
 
 body {
@@ -32,6 +41,19 @@ button {
 }
 
 button:hover {
+    color: #6496C6;
+}
+
+input {
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    margin-top: 5PX;
+    margin-left: 10PX;
+}
+
+input[type="radio"]:checked {
     color: #6496C6;
 }
 

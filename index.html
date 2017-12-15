@@ -3,14 +3,14 @@
 <head>
     <title>Raffle Wheel</title>
     <link rel="stylesheet" href="css/style.css"/>
-    <link rel="stylesheet" href="js/plugins/jquery/jquery-ui-1.12.1/jquery-ui.min.css"/>
-    <link rel="stylesheet" href="js/plugins/jquery/jquery-ui-1.12.1/jquery-ui.theme.min.css"/>
-    <link rel="stylesheet" href="js/plugins/jquery/jquery-ui-1.12.1/jquery-ui.structure.min.css"/>
-    <script type="text/javascript" src="js/plugins/jquery/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="js/plugins/PapaParse-4.3.2/papaparse.min.js"></script>
-    <script type="text/javascript" src="js/plugins/winwheel-2.6/Winwheel.min.js"></script>
-    <script type="text/javascript" src="js/plugins/tween.min.js"></script>
+    <link rel="stylesheet" href="plugins/jquery/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="plugins/jquery/jquery-ui.theme.min.css"/>
+    <link rel="stylesheet" href="plugins/jquery/jquery-ui.structure.min.css"/>
+    <script type="text/javascript" src="plugins/jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="plugins/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="plugins/PapaParse/papaparse.min.js"></script>
+    <script type="text/javascript" src="plugins/winwheel/Winwheel.min.js"></script>
+    <script type="text/javascript" src="plugins/tween.min.js"></script>
     <script type="text/javascript" src="js/page-functions.js"></script>
     <script type="text/javascript" src="js/game.js"></script>
 </head>
@@ -88,10 +88,18 @@
         <div class="sidebar-item">
             <div class="sidebar-title">
                 <h3>Wheel Colors</h3>
-                <div class="sidebar-icon" onclick="toggleContent(this, 'wheel-color-content', '250px')">+</div>
+                <div class="sidebar-icon" onclick="toggleContent(this, 'wheel-color-content', '300px')">+</div>
             </div>
             <div id="wheel-color-content" class="sidebar-content" style="height: 0px;">
               <p>Black will be ignored</p>
+              <table>
+                  <tr>
+                      <td>Sequence</td>
+                      <td width="30%"><input type="radio" name="color-type" id="color-sequence" checked="checked"></td>
+                      <td>Random</td>
+                      <td><input type="radio" name="color-type" id="color-sequence"></td>
+                  </tr>
+              </table>
                 <table style="width: 100%;">
                     <tr>
                         <td>Color 1</td>

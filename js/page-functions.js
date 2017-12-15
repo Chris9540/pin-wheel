@@ -39,6 +39,7 @@ $(document).ready(function() {
             document.getElementById('sidebar').style.opacity = "0";
         }
     });
+
     kanvas = document.getElementById('kanvas')
     kanvas.width = window.innerWidth;
     kanvas.height = window.innerHeight - 41;
@@ -60,6 +61,7 @@ function toggleContent(button, contentId, size) {
         content.style.height = "0px";
     }
 }
+
 function resizeCanvas() {
     kanvas.width = window.innerWidth;
     kanvas.height = window.innerHeight - 41;
@@ -149,4 +151,4 @@ function parseCSV() {
             },
         });
     },50);
-}​
+}
