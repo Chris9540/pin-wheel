@@ -1,6 +1,6 @@
 
 window.kanvas = null
-
+window.heightPercent = 50;
 var mie = (navigator.appName == "Microsoft Internet Explorer") ? true : false;
 if (!mie) {
      document.captureEvents(Event.MOUSEMOVE);
@@ -40,14 +40,29 @@ $(document).ready(function() {
         }
     });
 
-    kanvas = document.getElementById('kanvas')
+    kanvas = document.getElementById('canvas')
     kanvas.width = window.innerWidth;
     kanvas.height = window.innerHeight - 41;
 
     window.addEventListener('resize', function(event){
         kanvas.width = window.innerWidth;
         kanvas.height = window.innerHeight - 41;
+        gameWheel.centerX = window.innerWidth / 2;
+        gameWheel.draw();
     });
+
+    $("#dialog-manual").dialog({
+        autoOpen: false,
+    });
+    getBrowserInfo()
+    document.getElementById('browser-type').innerText = browserType;
+    document.getElementById('browser-version').innerText = browserVersion;
+    if (browserType == "Firefox" || browserType == "firefox") {
+        document.getElementById('browser-info').innerText = "The game should work with firefox however thay may be errors. After update 3.5 firefox is classed as bloatware please consider changing to a more reliable browser e.g. Chrome, Chromium, Opra and Edge will work well. However the best preformance comes from Chromium or Edge."
+    }
+    else if (browserType == "Chrome" || browserType == "chrome") {
+        document.getElementById('browser-info').innerText = "Fantastic this browser will give you good preformance"
+    }
 });
 
 function toggleContent(button, contentId, size) {
@@ -65,6 +80,8 @@ function toggleContent(button, contentId, size) {
 function resizeCanvas() {
     kanvas.width = window.innerWidth;
     kanvas.height = window.innerHeight - 41;
+    document.getElementById('game-pin').style.left = "50%"
+    gameWheel.draw();
 }
 
 $(function() {
@@ -72,24 +89,43 @@ $(function() {
         orientation: "vertical",
         range: "min",
         min: 800,
-        max: 4000,
-        value: 2000,
+        max: 10000,
+        value: 900,
+        step: 10,
         slide: function( event, ui ) {
-            $( "#amount" ).val( ui.value );
+            gameWheel.outerRadius = ui.value;
+            gameWheel.centerY = ((( (-1 * heightPercent) * window.innerHeight) / 100) + window.innerHeight + gameWheel.outerRadius);
+            gameWheel.draw();
         }
     });
 });
 
 $(function() {
-    $( "#slider-vertical-height, #slider-vertical-pin" ).slider({
+    $( "#slider-vertical-pin" ).slider({
         orientation: "vertical",
         range: "min",
-        min: 0,
-        max: 100,
+        min: 10,
+        max: 95,
         animate: true,
         value: 50,
         slide: function( event, ui ) {
-            $( "#amount" ).val( ui.value );
+            document.getElementById('game-pin').style.top = ((( (-1 *ui.value) * window.innerHeight) / 100) + (window.innerHeight - 7)) + "px";
+        }
+    });
+});
+
+$(function() {
+    $( "#slider-vertical-height" ).slider({
+        orientation: "vertical",
+        range: "min",
+        min: 5,
+        max: 95,
+        animate: true,
+        value: 50,
+        slide: function( event, ui ) {
+            heightPercent = ui.value;
+            gameWheel.centerY = ((( (-1 *ui.value) * window.innerHeight) / 100) + window.innerHeight + gameWheel.outerRadius);
+            gameWheel.draw();
         }
     });
 });
@@ -151,4 +187,25 @@ function parseCSV() {
             },
         });
     },50);
+}
+
+function getBrowserInfo()
+{
+    var ua = navigator.userAgent, tem,
+    M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+    if(/trident/i.test(M[1]))
+    {
+        tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
+        return 'IE '+(tem[1] || '');
+    }
+    if(M[1]=== 'Chrome')
+    {
+        tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
+        if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+    }
+    M = M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+    if((tem= ua.match(/version\/(\d+)/i))!= null) 
+        M.splice(1, 1, tem[1]);
+    window.browserType = M[0]
+    window.browserVersion = M[1]
 }

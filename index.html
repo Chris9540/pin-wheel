@@ -85,6 +85,7 @@
                 </table>
             </div>
         </div>
+<!-- WHEEL COLORS-->
         <div class="sidebar-item">
             <div class="sidebar-title">
                 <h3>Wheel Colors</h3>
@@ -164,9 +165,34 @@
                 </table>
             </div>
         </div>
+<!--BROWSER DATA-->
+        <div class="sidebar-item">
+            <div class="sidebar-title">
+                <h3>Browser Data</h3>
+                <div class="sidebar-icon" onclick="toggleContent(this, 'browser-content', '200px')">+</div>
+            </div>
+            <div id="browser-content" class="sidebar-content" style="height : 0px;">
+                <table>
+                    <tr>
+                        <td width="100px">Browser</td>
+                        <td id="browser-type"></td>
+                    </tr>
+                    <tr>
+                        <td width="100px">Version</td>
+                        <td id="browser-version"></td>
+                    </tr>
+                </table>
+                <p id="browser-info">
+                </p>
+            </div>
+        </div>
     </div>
 <!-- CANVAS -->
-    <canvas id="kanvas" class="kanvas"></canvas>
+    <canvas id="canvas" class="kanvas"></canvas>
+    <img id="game-pin" src="image/pin.png" class="pin" style="left: 50%; top: 41px;">
+    <div id="dialog-manual" title="Manual Input">
+        
+    </div>
 </body>
 </html>
 
