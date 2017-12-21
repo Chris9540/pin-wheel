@@ -1,6 +1,7 @@
 
 window.kanvas = null
 window.heightPercent = 50;
+
 var mie = (navigator.appName == "Microsoft Internet Explorer") ? true : false;
 if (!mie) {
      document.captureEvents(Event.MOUSEMOVE);
@@ -208,4 +209,8 @@ function getBrowserInfo()
         M.splice(1, 1, tem[1]);
     window.browserType = M[0]
     window.browserVersion = M[1]
+}
+
+function setColor(element) {
+    console.log(element.value)
 }
