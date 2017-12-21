@@ -11,4 +11,9 @@ Install
 Git Hub :
 - git clone https://github.com/Chris9540/pin-wheel.git
 
+Manual :
+- [Download](https://github.com/Chris9540/pin-wheel/archive/master.zip) the zip and extract
 
+Run
+---
+- Open index.html in your browser
