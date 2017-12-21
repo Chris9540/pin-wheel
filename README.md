@@ -17,3 +17,6 @@ Manual :
 Run
 ---
 - Open index.html in your browser
+
+How to Guide
+------------
