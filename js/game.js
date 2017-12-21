@@ -12,16 +12,14 @@ gameWheel = new Winwheel({
         'rotationAngle'         : ((360/8)/2) * -1,
         'numSegments' : 8,
         'segments'    :
-        [
-            {'fillStyle' : '#FF0000'},
-            {'fillStyle' : '#00FF00'},
-            {'fillStyle' : '#0000FF'},
-            {'fillStyle' : '#FFFF00'},
-            {'fillStyle' : '#00FFFF'},
-            {'fillStyle' : '#FF00FF'},
-            {'fillStyle' : '#FF7F00'},
-            {'fillStyle' : '#7E00FF'}
-        ],
+        [ {'fillStyle' : '#FF0000'},
+          {'fillStyle' : '#00FF00'},
+          {'fillStyle' : '#0000FF'},
+          {'fillStyle' : '#FFFF00'},
+          {'fillStyle' : '#00FFFF'},
+          {'fillStyle' : '#FF00FF'},
+          {'fillStyle' : '#FF7F00'},
+          {'fillStyle' : '#7E00FF'} ],
         'animation' :
             {
                 'type'          : 'spinToStop',
