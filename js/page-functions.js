@@ -52,17 +52,20 @@ $(document).ready(function() {
         gameWheel.draw();
     });
 
-    $("#dialog-manual").dialog({
+    $("#dialog-winner").dialog({
         autoOpen: false,
     });
+    $("#dialog-error").dialog({
+        autoOpen: false,
+    })
     getBrowserInfo()
     document.getElementById('browser-type').innerText = browserType;
     document.getElementById('browser-version').innerText = browserVersion;
     if (browserType == "Firefox" || browserType == "firefox") {
-        document.getElementById('browser-info').innerText = "The game should work with firefox however thay may be errors. After update 3.5 firefox is classed as bloatware please consider changing to a more reliable browser e.g. Chrome, Chromium, Opra and Edge will work well. However the best preformance comes from Chromium or Edge."
+        document.getElementById('browser-info').innerText = "The game should work with firefox however thay may be errors."
     }
     else if (browserType == "Chrome" || browserType == "chrome") {
-        document.getElementById('browser-info').innerText = "Fantastic this browser will give you good preformance"
+        document.getElementById('browser-info').innerText = "Fantastic this browser will give you good preformance."
     }
 });
 
@@ -141,8 +144,8 @@ function parseCSV() {
     setTimeout(function(){ 
         $('#csv').parse({
             config: {
-                delimiter: "",  // auto-detect
-                newline: "",    // auto-detect
+                delimiter: "",
+                newline: "",
                 quoteChar: '"',
                 header: false,
                 dynamicTyping: false,
@@ -162,17 +165,12 @@ function parseCSV() {
                 },
                 complete:   function() {
                     blank = fullCSVlengh - entries
-                    console.log("full length : " + fullCSVlengh)
-                    console.log("entries : " + entries)
-                    console.log("blanks : " + blank)
-                    console.log(csvData)
                     document.getElementById('load').style.display = "none"
                     document.getElementById('pass').style.display = "inline-block"
                     document.getElementById('entries').innerText = entries
                     document.getElementById('blanks').innerText = blank
                     document.getElementById('total').innerText = fullCSVlengh
                 },
-                error: undefined,
                 download: false,
                 skipEmptyLines: false,
                 chunk: undefined,
@@ -181,10 +179,11 @@ function parseCSV() {
                 withCredentials: undefined
             },
             error: function(err, file, inputElem, reason) {
-                console.log("The Error: " + err)
-                console.log("The Reason: " + reason)
+                document.getElementById('error-code').innerText = err;
+                document.getElementById('error-detail').innerText = reason
                 document.getElementById('load').style.display = "none"
                 document.getElementById('fail').style.display = "inline-block"
+                $("#dialog-error").dialog("open");
             },
         });
     },50);
@@ -212,5 +211,23 @@ function getBrowserInfo()
 }
 
 function setColor(element) {
-    console.log(element.value)
+    let oldValue = element.getAttribute("data-previous-value")
+    if (element.value == "#000000") {
+        removeValue(colors, oldValue)
+    }
+    else {
+        colors.push(element.value)
+    }
+    element.setAttribute("data-previous-value", element.value)
+}
+
+function removeValue(arr) {
+    var what, a = arguments, L = a.length, ax;
+    while (L > 1 && arr.length) {
+        what = a[--L];
+        while ((ax= arr.indexOf(what)) !== -1) {
+            arr.splice(ax, 1);
+        }
+    }
+    return arr;
 }

@@ -9,17 +9,6 @@ gameWheel = new Winwheel({
         'outerRadius'           : 900,
         'centerY'               : (window.innerHeight -41),
         'textFontSize'          : 10,
-        'rotationAngle'         : ((360/8)/2) * -1,
-        'numSegments' : 8,
-        'segments'    :
-        [ {'fillStyle' : '#FF0000'},
-          {'fillStyle' : '#00FF00'},
-          {'fillStyle' : '#0000FF'},
-          {'fillStyle' : '#FFFF00'},
-          {'fillStyle' : '#00FFFF'},
-          {'fillStyle' : '#FF00FF'},
-          {'fillStyle' : '#FF7F00'},
-          {'fillStyle' : '#7E00FF'} ],
         'animation' :
             {
                 'type'          : 'spinToStop',
@@ -32,19 +21,15 @@ gameWheel = new Winwheel({
 gameWheel.draw()
 });
 
-function addSegment() {
-    gameWheel.addSegment({ 'fillStyle' : getNextColor() }, 1);
+function addSegment(text) {
+    gameWheel.addSegment({
+        'text' : text,
+        'fillStyle' : getNextColor()
+    }, 1);
     gameWheel.rotationAngle = ((360/gameWheel.numSegments)/2) * -1
     gameWheel.draw();
 }
-window.colors = new Array("#FF0000",
-                          "#00FF00",
-                          "#0000FF",
-                          "#FFFF00",
-                          "#00FFFF",
-                          "#FF00FF",
-                          "#FF7F00",
-                          "#7E00FF");
+window.colors = new Array("#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF", "#FF7F00", "#7E00FF");
 window.currentColor = 0
 window.randomColor = false
 function getNextColor() {
